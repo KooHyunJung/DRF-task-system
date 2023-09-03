@@ -17,13 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+VERSION = 'v1'
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f'admin/{VERSION}/', admin.site.urls),
 
-    path('user/', include('user.urls')),
+    path(f'users/{VERSION}/', include('user.urls')),
 
-    path('task/', include('task.urls')),
+    path(f'tasks/{VERSION}/', include('task.urls')),
 
-    path('sub_task/', include('sub_task.urls')),
+    path(f'sub-tasks/{VERSION}/', include('sub_task.urls')),
 
 ]
