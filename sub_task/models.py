@@ -2,9 +2,12 @@ import uuid
 
 from django.db import models
 
+from task.models import Task
+
 
 class SudTask(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4())
+    task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
     team = models.CharField(max_length=30)
     is_complete = models.BooleanField(default=False)
     complete_date = models.DateTimeField(null=True, blank=True)

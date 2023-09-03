@@ -1,8 +1,9 @@
 from rest_framework import mixins, generics
 
+from user.models import User
 from task.models import Task
+from sub_task.models import SudTask
 from task.serializers import TaskSerializer
-
 
 
 class TaskListAPIMixins(
@@ -40,3 +41,15 @@ class TaskDetailAPIMixins(
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class TaskWithSubTaskDetailView(generics.RetrieveAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    lookup_field = 'pk'
+
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(id=request.pk)
+        query = SudTask.objects.filter(team__contains=[user.team])
+        query = query.select_related('task')
+        return query
