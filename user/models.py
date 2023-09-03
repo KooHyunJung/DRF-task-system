@@ -6,5 +6,5 @@ class User(models.Model):
     name = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
     team = models.CharField(max_length=30)
-    created_date = models.DateField(auto_now_add=True)
-    updated_date = models.DateField(auto_now=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
