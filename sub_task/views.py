@@ -4,8 +4,7 @@ from sub_task.models import SudTask
 from sub_task.serializers import SudTaskSerializer
 
 
-
-class TaskListAPIMixins(
+class SubTaskListAPIMixins(
     mixins.ListModelMixin,
     mixins.CreateModelMixin,
     generics.GenericAPIView
@@ -21,7 +20,7 @@ class TaskListAPIMixins(
         return self.create(request, *args, **kwargs)
 
 
-class TaskDetailAPIMixins(
+class SubTaskDetailAPIMixins(
     generics.GenericAPIView,
     mixins.RetrieveModelMixin,
     mixins.CreateModelMixin,

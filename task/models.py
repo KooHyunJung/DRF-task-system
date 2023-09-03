@@ -21,12 +21,12 @@ def validate_team_list(value):
 
 
 class Task(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4())
-    user_id = models.IntegerField(max_length=30)
-    # 특정 DB 사용시 ListField 사용 가능
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), unique=True)
+    user_id = models.IntegerField()
     team = models.CharField(max_length=200, validators=[validate_team_list])
+    # team = models.ListField(models.CharField(max_length=30), default=list, validators=[validate_team_list])
     title = models.CharField(max_length=30)
-    content = models.IntegerField(max_length=500)
+    content = models.CharField(max_length=500)
     is_complete = models.BooleanField(default=False)
     complete_date = models.DateTimeField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
