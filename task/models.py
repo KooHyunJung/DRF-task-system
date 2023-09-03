@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 from rest_framework.exceptions import ValidationError
 
@@ -21,13 +19,12 @@ def validate_team_list(value):
 
 
 class Task(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), unique=True)
+    id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField()
-    team = models.CharField(max_length=200, validators=[validate_team_list])
-    # team = models.ListField(models.CharField(max_length=30), default=list, validators=[validate_team_list])
+    team = models.CharField(max_length=50)
     title = models.CharField(max_length=30)
-    content = models.CharField(max_length=500)
+    content = models.TextField()
     is_complete = models.BooleanField(default=False)
-    complete_date = models.DateTimeField(null=True, blank=True)
+    complete_date = models.DateTimeField(null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)

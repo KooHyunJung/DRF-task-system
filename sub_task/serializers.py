@@ -7,6 +7,7 @@ class SudTaskSerializer(serializers.ModelSerializer):
         model = SudTask
         fields = [
             'id',
+            'task_id',
             'team',
             'is_complete',
             'complete_date',

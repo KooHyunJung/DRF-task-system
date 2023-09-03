@@ -1,5 +1,7 @@
 from django.db import models
 
+from task.models import validate_team_list
+
 
 class User(models.Model):
     id = models.IntegerField(primary_key=True)

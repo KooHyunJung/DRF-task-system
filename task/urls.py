@@ -5,5 +5,5 @@ from task.views import TaskWithSubTaskDetailView, TaskListAPIMixins, TaskDetailA
 urlpatterns = [
     path('task/<int:pk>', TaskWithSubTaskDetailView.as_view()),
     path('task/list', TaskListAPIMixins.as_view()),
-    path('task/detail/<uuid:pk>', TaskDetailAPIMixins.as_view()),
+    path('task/detail/<int:pk>', TaskDetailAPIMixins.as_view()),
 ]
